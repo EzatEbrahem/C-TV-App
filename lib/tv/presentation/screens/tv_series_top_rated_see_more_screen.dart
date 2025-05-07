@@ -21,7 +21,6 @@ class TopRatedSeeTvSeriesMoreScreen extends StatelessWidget {
             appBar: AppBar(centerTitle:true , title: Text('Top Rated Movies',style: Theme.of(context).textTheme.bodyMedium,),),
             body:BlocBuilder<TvSeriesBloc,TvSeriesState>(
                 builder:(context,state) {
-                  print("topRatedSeeMore");
                   switch(state.topRatedTvSeriesState){
                     case RequestState.loading:
                       return const Center(child: CircularProgressIndicator());

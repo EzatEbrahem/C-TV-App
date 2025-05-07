@@ -16,6 +16,6 @@ class ReviewsMovie extends Equatable {
       this.authorDetails});
 
   @override
-  // TODO: implement props
+
   List<Object?> get props => [author, content, createdAt, id];
 }

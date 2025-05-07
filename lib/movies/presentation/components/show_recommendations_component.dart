@@ -7,6 +7,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../core/network/api_constance.dart';
 import '../../../core/utils/enums.dart';
 import '../controller/movie_detail_bloc.dart';
+import '../controller/movie_detail_state.dart';
 import '../screens/movie_detail_screen.dart';
 
 class ShowRecommendationsComponent extends StatelessWidget {
@@ -14,6 +15,9 @@ class ShowRecommendationsComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size;
+    final height=size.height;
+    final width=size.height;
     return  BlocBuilder<MovieDetailBloc, MovieDetailState>(
       buildWhen: (previous, current) => current.recommendationState!=previous.recommendationState,
       builder: (context, state) {
@@ -48,8 +52,8 @@ class ShowRecommendationsComponent extends StatelessWidget {
                             baseColor: Colors.grey[850]!,
                             highlightColor: Colors.grey[800]!,
                             child: Container(
-                              height: 170.0,
-                              width: 120.0,
+                              height: height/5,
+                              width: width/3,
                               decoration: BoxDecoration(
                                 color: Colors.black,
                                 borderRadius: BorderRadius.circular(8.0),
@@ -58,7 +62,7 @@ class ShowRecommendationsComponent extends StatelessWidget {
                           ),
                           errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
-                          height: 180.0,
+                          height: height/5,
                           fit: BoxFit.fill,
                         ),
                       ),

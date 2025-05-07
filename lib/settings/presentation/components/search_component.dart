@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/movies/domain/entities/movie_details.dart';
 import 'package:movies_app/movies/presentation/screens/movie_detail_screen.dart';
 import 'package:movies_app/settings/presentation/controller/app_setting_bloc.dart';
 import 'package:movies_app/tv/presentation/screens/tv_series_detail_screen.dart';
@@ -10,6 +8,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../core/network/api_constance.dart';
 import '../../../core/utils/enums.dart';
+import '../controller/app_setting_state.dart';
 
 class SearchComponent extends StatelessWidget {
   const SearchComponent({super.key});

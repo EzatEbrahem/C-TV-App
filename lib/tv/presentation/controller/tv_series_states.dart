@@ -15,8 +15,12 @@ class TvSeriesState extends Equatable{
   final List<TvSeries> popularTvSeries;
   final RequestState popularTvSeriesState;
   final String popularTvSeriesMessage;
+  final RequestState reloadTvSeriesScreenState;
+  final ConnectState connectionState;
 
   const TvSeriesState({
+    this.connectionState=ConnectState.online,
+    this.reloadTvSeriesScreenState=RequestState.loading,
       this.airingTodayTvSeries=const[],
       this.airingTodayTvSeriesState=RequestState.loading,
       this.airingTodayTvSeriesMessage='',
@@ -28,6 +32,8 @@ class TvSeriesState extends Equatable{
       this.popularTvSeriesMessage=''
   });
   TvSeriesState copyWith({
+    ConnectState? connectionState,
+    RequestState? reloadTvSeriesScreenState,
     List<TvSeries>? airingTodayTvSeries,
     RequestState? airingTodayTvSeriesState,
     String? airingTodayTvSeriesMessage,
@@ -39,6 +45,8 @@ class TvSeriesState extends Equatable{
     String? popularTvSeriesMessage,
   }) {
     return TvSeriesState(
+      connectionState: connectionState??this.connectionState,
+      reloadTvSeriesScreenState: reloadTvSeriesScreenState??this.reloadTvSeriesScreenState,
       airingTodayTvSeries: airingTodayTvSeries ?? this.airingTodayTvSeries,
       airingTodayTvSeriesState: airingTodayTvSeriesState ?? this.airingTodayTvSeriesState,
       airingTodayTvSeriesMessage: airingTodayTvSeriesMessage ?? this.airingTodayTvSeriesMessage,
@@ -53,9 +61,9 @@ class TvSeriesState extends Equatable{
 
 
   @override
-  // TODO: implement props
+
   List<Object?> get props =>
-      [
+      [reloadTvSeriesScreenState,
         airingTodayTvSeries,
         airingTodayTvSeriesState,
         airingTodayTvSeriesMessage,
@@ -65,7 +73,7 @@ class TvSeriesState extends Equatable{
         popularTvSeries,
         popularTvSeriesState,
         popularTvSeriesMessage,
-
+        connectionState
       ];
 
 }

@@ -2,19 +2,30 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/settings/presentation/controller/app_setting_bloc.dart';
+import 'package:movies_app/settings/presentation/controller/app_setting_event.dart';
+import 'package:movies_app/settings/presentation/controller/app_setting_state.dart';
 import 'package:movies_app/settings/presentation/screens/splash_screen.dart';
-
-import 'core/network/Cache_helper.dart';
+import 'package:movies_app/tv/data/models/tv_series_hive_model.dart';
+import 'core/network/cache_helper.dart';
 import 'core/utils/theme.dart';
+import 'movies/data/models/movie_hive_model.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ServicesLocator().init();
+  await dotenv.load();
   await CacheHelper.init();
   bool? dark=CacheHelper.getMode(key: "isDark");
+  await Hive.initFlutter();
+  Hive.registerAdapter(MovieHiveModelAdapter());
+  Hive.registerAdapter(TvSeriesHiveModelAdapter());
+
   runApp( MyApp(dark));
 }
 
@@ -22,7 +33,6 @@ class MyApp extends StatelessWidget {
   bool? isDark;
   MyApp(this.isDark, {Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

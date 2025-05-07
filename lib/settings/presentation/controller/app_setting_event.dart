@@ -1,4 +1,6 @@
-part of 'app_setting_bloc.dart';
+
+import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
 @immutable
 abstract class AppSettingEvent extends Equatable{

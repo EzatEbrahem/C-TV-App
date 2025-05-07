@@ -12,10 +12,13 @@ import 'package:movies_app/movies/domain/usecases/get_recommendation_movies_usec
 
 import '../../../core/error/exceptions.dart';
 import '../../domain/repository/base_movies_repository.dart';
+
 import '../datasource/movie_remote_data_source.dart';
+
 
 class MoviesRepository extends BaseMoviesRepository {
   final BaseMovieRemoteDataSource baseMovieRemoteDataSource;
+
 
    MoviesRepository(this.baseMovieRemoteDataSource);
 
@@ -88,4 +91,5 @@ class MoviesRepository extends BaseMoviesRepository {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     }
   }
+
 }

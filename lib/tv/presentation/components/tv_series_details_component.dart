@@ -17,6 +17,8 @@ class TvSeriesDetailsComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size;
+    final height=size.height;
     return BlocBuilder<TvSeriesDetailsBloc, TvSeriesDetailsState>(
       buildWhen: (previous, current) =>
       current.tvSeriesDetailsState!=previous.tvSeriesDetailsState||current.show!=previous.show,
@@ -31,7 +33,7 @@ class TvSeriesDetailsComponent extends StatelessWidget {
               slivers: [
                 SliverAppBar(
                   pinned: true,
-                  expandedHeight: 250.0,
+                  expandedHeight: height*0.3,
                   flexibleSpace: FlexibleSpaceBar(
                     background: FadeIn(
                       duration: const Duration(milliseconds: 500),

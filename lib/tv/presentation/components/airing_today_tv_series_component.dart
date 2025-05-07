@@ -1,13 +1,10 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/tv/presentation/controller/tv_series_bloc.dart';
 import 'package:movies_app/tv/presentation/controller/tv_series_states.dart';
 import 'package:movies_app/tv/presentation/screens/tv_series_detail_screen.dart';
-
 import '../../../core/network/api_constance.dart';
 import '../../../core/utils/enums.dart';
 
@@ -16,30 +13,36 @@ class AiringTodayTvSeriesComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final height = size.height/2.9;
     return BlocBuilder<TvSeriesBloc,TvSeriesState>(
       buildWhen:(previous, current) => previous.airingTodayTvSeriesState!=current.airingTodayTvSeriesState  ,
         builder: (BuildContext context, TvSeriesState state) {
         switch(state.airingTodayTvSeriesState){
           case RequestState.loading:
-            return const SizedBox(
-              height: 300.0,
-              child: Center(
+            return  SizedBox(
+              height: height,
+              child: const Center(
                 child: CircularProgressIndicator(),
               ),
             );
           case RequestState.loaded:
             return CarouselSlider(
               options: CarouselOptions(
-                height: 300.0,
+                height: height,
                 initialPage: 0,
                 enableInfiniteScroll: true,
                 autoPlay: true,
                 viewportFraction: 1.0,
-                autoPlayCurve:Curves.elasticInOut ,
-                autoPlayAnimationDuration:const Duration(seconds:1 ) ,
+                pageSnapping: true,
+                autoPlayCurve:Curves.easeInOut ,
+                scrollPhysics: const BouncingScrollPhysics(),
+                enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                autoPlayAnimationDuration:const Duration(milliseconds:900 ) ,
                 autoPlayInterval: const Duration(seconds:2 ),
                 reverse: false,
-                scrollDirection: Axis.vertical,
+                enlargeCenterPage: true,
+                scrollDirection: Axis.horizontal,
                 onPageChanged: (index, reason) {},
               ),
               items: state.airingTodayTvSeries.map(
@@ -78,7 +81,7 @@ class AiringTodayTvSeriesComponent extends StatelessWidget {
                           },
                           blendMode: BlendMode.dstIn,
                           child: CachedNetworkImage(
-                            height: 300.0,
+                            height: height,
                             imageUrl: ApiConstance.imageUrl(item.backdropPath),
                             fit: BoxFit.fill,
                             errorWidget: (context, url, error) =>
@@ -127,7 +130,7 @@ class AiringTodayTvSeriesComponent extends StatelessWidget {
             );
           case RequestState.error:
             return SizedBox(
-              height: 300.0,
+              height: height,
               child: Center(
                 child: Text(state.airingTodayTvSeriesMessage),
               ),

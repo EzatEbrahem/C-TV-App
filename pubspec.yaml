@@ -45,16 +45,22 @@ dependencies:
   animated_splash_screen: ^1.3.0
   animate_do: ^2.1.0
   cached_network_image: ^3.2.1
-  carousel_slider: ^4.1.1
+  carousel_slider: ^5.0.0
   google_fonts: ^3.0.1
   shimmer: ^2.0.0
   conditional_builder_null_safety: ^0.0.6
   lottie: ^3.0.0
-  youtube_player_flutter: ^9.0.4
+  flutter_dotenv: ^5.2.1
+  youtube_player_flutter: ^9.1.1
   sliding_up_panel: ^2.0.0+1
   shared_preferences: ^2.1.0
+  hive_flutter: ^1.1.0
+  top_snackbar_flutter: ^3.2.0
+
 
 dev_dependencies:
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.6
 
 
   flutter_test:
@@ -83,6 +89,7 @@ flutter:
     - assets/CTV.jpg
     - assets/review2.jpg
     - assets/search1.png
+    - .env
 
 
   # To add assets to your application, add an assets section, like this:

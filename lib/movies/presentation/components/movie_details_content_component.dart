@@ -9,12 +9,15 @@ import 'package:movies_app/movies/presentation/controller/movie_detail_bloc.dart
 import '../../../core/network/api_constance.dart';
 import '../../../core/utils/enums.dart';
 import '../../domain/entities/genres.dart';
+import '../controller/movie_detail_state.dart';
 
 class MovieDetailsContentComponent extends StatelessWidget {
   const MovieDetailsContentComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size;
+    final height=size.height;
     return BlocBuilder<MovieDetailBloc, MovieDetailState>(
     builder: (context, state) {
     switch(state.movieDetailsState){
@@ -26,7 +29,7 @@ class MovieDetailsContentComponent extends StatelessWidget {
           slivers: [
             SliverAppBar(
               pinned: true,
-              expandedHeight: 250.0,
+              expandedHeight: height*0.3,
               flexibleSpace: FlexibleSpaceBar(
                 background: FadeIn(
                   duration: const Duration(milliseconds: 500),

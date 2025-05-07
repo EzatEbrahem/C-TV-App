@@ -45,6 +45,7 @@ class TvSeriesDetailsBloc extends Bloc<TvSeriesDetailsEvent,TvSeriesDetailsState
   }
 
   FutureOr<void> _getTvSeriesReviews(GetTvSeriesReviewsEvent event, Emitter<TvSeriesDetailsState> emit) async {
+    emit(state.copyWith(tvSeriesReviewState: RequestState.loading));
     final result= await getTvSeriesReviewsUseCase( TvSeriesIdParameter(tvSeriesId: event.tvSeriesIdParameter.tvSeriesId));
     result.fold((l) => emit(
         state.copyWith(
@@ -75,17 +76,17 @@ class TvSeriesDetailsBloc extends Bloc<TvSeriesDetailsEvent,TvSeriesDetailsState
 
   FutureOr<void> _navigateList(NavigateBetweenListEvent event, Emitter<TvSeriesDetailsState> emit) {
     List<bool>l;
-    bool? _show;
+    bool? show;
     if(event.index==0){
       l=[true,false];
     }else{
       l=[false,true];
     }
-    _show=event.show;
-    _show=!_show!;
+    show=event.show;
+    show=!show!;
 
   emit(state.copyWith(selectedButton: l,
-      currentIndex: event.index,show: _show));
+      currentIndex: event.index,show: show));
   }
 
   FutureOr<void> _getTvSeriesEpisodeEvent(GetTvSeriesEpisodeEvent event, Emitter<TvSeriesDetailsState> emit) async{

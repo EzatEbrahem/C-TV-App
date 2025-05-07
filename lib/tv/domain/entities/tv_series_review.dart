@@ -18,6 +18,6 @@ class TvSeriesReview extends Equatable {
       required this.tvSeriesReviewAuthorDetails});
 
   @override
-// TODO: implement props
+
   List<Object?> get props => [author, content, createdAt, id,tvSeriesReviewAuthorDetails];
 }

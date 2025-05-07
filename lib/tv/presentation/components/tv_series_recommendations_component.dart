@@ -1,4 +1,3 @@
-
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:movies_app/tv/presentation/controller/tv_series_details_bloc.dar
 import 'package:movies_app/tv/presentation/controller/tv_series_details_states.dart';
 import 'package:movies_app/tv/presentation/screens/tv_series_detail_screen.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../../../core/network/api_constance.dart';
 import '../../../core/utils/enums.dart';
 
@@ -21,7 +19,6 @@ class TvSeriesRecommendationsComponent extends StatelessWidget {
         buildWhen: (previous, current) =>
         current.tvSeriesRecommendationsState!=previous.tvSeriesRecommendationsState,
         builder: (context, state) {
-          print("recommendations");
           switch(state.tvSeriesRecommendationsState){
             case RequestState.loading:
               return const Center(child: CircularProgressIndicator());

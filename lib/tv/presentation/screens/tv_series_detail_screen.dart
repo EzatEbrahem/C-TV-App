@@ -51,7 +51,7 @@ class TvSeriesDetailScreen extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 children: [
                   GestureDetector(
-                      onTap:()=>TogglePanel(panelController),
+                      onTap:()=>togglePanel(panelController),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 110,vertical: 5),
                         child: Center(
@@ -75,7 +75,7 @@ class TvSeriesDetailScreen extends StatelessWidget {
       ),
     );
   }
-  void TogglePanel(PanelController panelController){
+  void togglePanel(PanelController panelController){
     if(Opened==false){
       panelController.open();
     }else{

@@ -5,6 +5,7 @@ import 'package:movies_app/movies/presentation/controller/movie_detail_bloc.dart
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../core/utils/enums.dart';
+import '../controller/movie_detail_state.dart';
 
 class TrailerComponent extends StatelessWidget {
   const TrailerComponent({Key? key}) : super(key: key);
@@ -25,18 +26,19 @@ class TrailerComponent extends StatelessWidget {
             return ConditionalBuilder(
               condition:state.trailerMovie?.key!="" ,
               builder:(context)=>YoutubePlayer(controller: controller,
+
                 showVideoProgressIndicator:true,
                 progressIndicatorColor: Colors.amber,
-                bottomActions:[
+                bottomActions:const [
                   CurrentPosition(),
                   ProgressBar(
                       isExpanded:true,
-                      colors:const ProgressBarColors(
+                      colors:ProgressBarColors(
                         playedColor: Colors.amber,
                         handleColor: Colors.amberAccent,
                       )),
                   RemainingDuration(),
-                  const PlaybackSpeedButton(),
+                  PlaybackSpeedButton(),
 
 
                 ],) ,

@@ -7,6 +7,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../core/network/api_constance.dart';
 import '../../../core/utils/enums.dart';
+import '../controller/movie_detail_state.dart';
 
 class ReviewComponent extends StatelessWidget {
   const ReviewComponent({Key? key}) : super(key: key);
@@ -17,7 +18,6 @@ class ReviewComponent extends StatelessWidget {
       buildWhen:(previous, current) => previous.reviewsMovieState!=current.reviewsMovieState ,
       builder: (context,state){
         switch(state.reviewsMovieState){
-
           case RequestState.loading:
             return const Center(
               child: SizedBox(

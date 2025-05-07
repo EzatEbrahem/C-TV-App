@@ -13,6 +13,9 @@ class SeeMoreComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size;
+    final height=size.height;
+    final width=size.width;
     return Padding(
         padding: const EdgeInsets.only(left: 10.0,right: 10,top:10),
         child: ClipRRect(
@@ -44,16 +47,16 @@ class SeeMoreComponent extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                     child: CachedNetworkImage(
-                      width: 115,
-                      height: 165,
+                      width: width*0.35,
+                      height: height*0.22,
                       fit: BoxFit.fill,
                       imageUrl: ApiConstance.imageUrl("${movie.backdropPath}"),
                       placeholder: (context, url) => Shimmer.fromColors(
                         baseColor: Colors.grey[850]!,
                         highlightColor: Colors.grey[800]!,
                         child: Container(
-                          width: 115,
-                          height: 165,
+                          width: width*0.35,
+                          height: height*0.22,
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(8.0),
@@ -69,18 +72,18 @@ class SeeMoreComponent extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 11.0,right: 8),
                         child: SizedBox(
-                          height: 160,
+                          height: height*0.22,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(top:5),
+                                padding: const EdgeInsets.only(top:20),
                                 child: Text(
-                                  movie.title,style: const TextStyle( fontSize: 15,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),overflow:TextOverflow.ellipsis ,maxLines:2 ),
+                                  movie.title,style: const TextStyle( fontSize: 19,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),overflow:TextOverflow.ellipsis ,maxLines:2 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 10.0),
+                                padding: const EdgeInsets.only(top: 20.0),
                                 child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -88,17 +91,17 @@ class SeeMoreComponent extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(4.0),
                                     child: Container(color: Colors.red,child: Padding(
                                       padding: const EdgeInsets.only(left: 9.0,right:9 ,top:3 ,bottom:3 ),
-                                      child: Text(movie.releaseDate.substring(0,4),style: const TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+                                      child: Text(movie.releaseDate.substring(0,4),style: const TextStyle(fontSize: 13,fontWeight: FontWeight.bold),),
                                     ),),
                                   ),
                                       Padding(
                                         padding: const EdgeInsets.only(left: 15.0),
                                         child: Row(
                                             children: [
-                                          const Icon(Icons.star,color: Colors.yellow,size: 20),
+                                          const Icon(Icons.star,color: Colors.yellow,size: 21),
                                           Padding(
                                             padding: const EdgeInsets.only(left: 3.0),
-                                            child: Text("${movie.voteAverage}",style:const TextStyle(fontSize: 12,fontWeight: FontWeight.bold)),
+                                            child: Text("${movie.voteAverage}".substring(0,3),style:const TextStyle(fontSize: 13,fontWeight: FontWeight.bold)),
                                           ),
                                         ]),
                                       ),
@@ -106,9 +109,9 @@ class SeeMoreComponent extends StatelessWidget {
                                 ]),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top:10.0),
+                                padding: const EdgeInsets.only(top:20.0),
                                 child: Text('overview:  ${movie.overview}',
-                                  overflow:TextOverflow.ellipsis ,maxLines:4 ,style: const TextStyle(fontSize:12 , fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),),
+                                  overflow:TextOverflow.ellipsis ,maxLines:3 ,style: const TextStyle(fontSize:13 , fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),),
                               )
                             ],
                           ),

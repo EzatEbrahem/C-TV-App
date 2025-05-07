@@ -11,6 +11,9 @@ import 'package:movies_app/movies/presentation/controller/movie_detail_bloc.dart
 
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+import '../controller/movie_detail_event.dart';
+import '../controller/movie_detail_state.dart';
+
 class MovieDetailScreen extends StatelessWidget {
   final int id;
   PanelController panelController =PanelController();
@@ -49,7 +52,7 @@ class MovieDetailScreen extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   children: [
                     GestureDetector(
-                        onTap:()=>TogglePanel(panelController),
+                        onTap:()=>togglePanel(panelController),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 110,vertical: 5),
                           child: Center(
@@ -73,7 +76,7 @@ class MovieDetailScreen extends StatelessWidget {
       ),
     );
   }
-  void TogglePanel(PanelController panelController){
+  void togglePanel(PanelController panelController){
     if(Opened==false){
       panelController.open();
     }else{

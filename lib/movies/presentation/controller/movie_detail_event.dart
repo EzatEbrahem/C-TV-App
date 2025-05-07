@@ -1,4 +1,8 @@
-part of 'movie_detail_bloc.dart';
+
+
+import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 @immutable
 abstract class MovieDetailEvent extends Equatable {

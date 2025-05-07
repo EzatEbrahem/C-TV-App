@@ -19,7 +19,7 @@ class Movie extends Equatable {
       required this.releaseDate});
 
   @override
-  // TODO: implement props
+
   List<Object?> get props =>
       [id, title, backdropPath, genreIds, overview, voteAverage, releaseDate];
 }

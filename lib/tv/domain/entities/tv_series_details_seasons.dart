@@ -22,7 +22,7 @@ class TvSeriesDetailsSeasons extends Equatable{
   final double voteAverage;
 
   @override
-  // TODO: implement props
+
   List<Object?> get props => [airDate,episodeCount,id,name,overview,posterPath,seasonNumber,voteAverage];
 
 }

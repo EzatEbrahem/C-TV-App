@@ -7,6 +7,7 @@ import 'package:movies_app/movies/presentation/controller/movie_bloc.dart';
 
 import '../../../core/network/api_constance.dart';
 import '../../../core/utils/enums.dart';
+import '../controller/movie_state.dart';
 import '../screens/movie_detail_screen.dart';
 
 class NowPlayingComponent extends StatelessWidget {
@@ -14,15 +15,17 @@ class NowPlayingComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final height = size.height/2.9;
     return BlocBuilder<MovieBloc,MovieState>(
-      buildWhen:(previous, current)=>previous.nowPlayingState!=current.nowPlayingState,
+      buildWhen:(previous, current)=>previous.nowPlayingState!=current.nowPlayingState||previous.reloadMovieScreenState!=current.reloadMovieScreenState,
       builder: (context,state){
         switch(state.nowPlayingState){
 
           case RequestState.loading:
-            return const SizedBox(
-              height: 300.0,
-              child: Center(
+            return  SizedBox(
+              height: height,
+              child: const Center(
                 child: CircularProgressIndicator(),
               ),
             );
@@ -31,16 +34,20 @@ class NowPlayingComponent extends StatelessWidget {
               duration: const Duration(milliseconds: 500),
               child: CarouselSlider(
                 options: CarouselOptions(
-                  height: 300.0,
+                  height: height,
                   initialPage: 0,
                   enableInfiniteScroll: true,
                   autoPlay: true,
                   viewportFraction: 1.0,
-                  autoPlayCurve:Curves.elasticInOut ,
-                  autoPlayAnimationDuration:const Duration(seconds:1 ) ,
+                  pageSnapping: true,
+                  autoPlayCurve:Curves.easeInOut ,
+                  scrollPhysics: const BouncingScrollPhysics(),
+                  enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                  autoPlayAnimationDuration:const Duration(milliseconds:900 ) ,
                   autoPlayInterval: const Duration(seconds:2 ),
                   reverse: false,
-                  scrollDirection: Axis.vertical,
+                  enlargeCenterPage: true,
+                  scrollDirection: Axis.horizontal,
                   onPageChanged: (index, reason) {},
                 ),
                 items: state.nowPlayingMovies.map(
@@ -79,7 +86,7 @@ class NowPlayingComponent extends StatelessWidget {
                             },
                             blendMode: BlendMode.dstIn,
                             child: CachedNetworkImage(
-                              height: 300.0,
+                              height: height,
                               imageUrl: ApiConstance.imageUrl(item.backdropPath!),
                               fit: BoxFit.fill,
                               errorWidget: (context, url, error) =>
@@ -129,7 +136,7 @@ class NowPlayingComponent extends StatelessWidget {
             );
           case RequestState.error:
             return SizedBox(
-              height: 300.0,
+              height: height,
               child: Center(
                 child: Text(state.nowPlayingMessage),
               ),

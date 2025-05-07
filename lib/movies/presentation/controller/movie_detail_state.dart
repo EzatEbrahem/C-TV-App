@@ -1,4 +1,13 @@
-part of 'movie_detail_bloc.dart';
+
+
+import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
+
+import '../../../core/utils/enums.dart';
+import '../../domain/entities/movie_details.dart';
+import '../../domain/entities/recommendation.dart';
+import '../../domain/entities/reviews.dart';
+import '../../domain/entities/trailer.dart';
 
 @immutable
 class MovieDetailState extends Equatable {

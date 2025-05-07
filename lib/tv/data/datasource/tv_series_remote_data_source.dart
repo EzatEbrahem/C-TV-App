@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:movies_app/core/error/error_message_model.dart';
 import 'package:movies_app/core/error/exceptions.dart';
@@ -90,7 +88,6 @@ class TvSeriesRemoteDataSource extends BaseTvSeriesRemoteDataSource{
   @override
   Future<List<TvSeriesEpisodeModel>> getTvSeriesEpisodes(TvSeriesIdParameter parameter) async{
 
-    print(parameter.tvSeriesId);
     final result = await Dio().get(ApiConstance.tvSeriesEpisodesPath(parameter));
     if(result.statusCode==200){
       return List<TvSeriesEpisodeModel>.from( result.data["episodes"].map((e)=>TvSeriesEpisodeModel.fromJson(e)));

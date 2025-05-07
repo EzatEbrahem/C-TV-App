@@ -11,3 +11,4 @@ abstract class TvSeriesEvent extends Equatable{
 class GetAiringTodayTvSeriesEvent extends TvSeriesEvent{}
 class GetTopRatedTvSeriesEvent extends TvSeriesEvent{}
 class GetPopularTvSeriesEvent extends TvSeriesEvent{}
+class ReloadDataTvSeriesEvent extends TvSeriesEvent {}

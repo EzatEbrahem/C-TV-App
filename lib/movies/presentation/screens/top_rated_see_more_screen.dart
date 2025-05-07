@@ -5,6 +5,8 @@ import 'package:movies_app/movies/presentation/components/see_more_component.dar
 import '../../../core/services/services_locator.dart';
 import '../../../core/utils/enums.dart';
 import '../controller/movie_bloc.dart';
+import '../controller/movie_event.dart';
+import '../controller/movie_state.dart';
 
 class TopRatedSeeMoreScreen extends StatelessWidget {
   const TopRatedSeeMoreScreen({Key? key}) : super(key: key);

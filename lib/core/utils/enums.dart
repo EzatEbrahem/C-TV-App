@@ -7,3 +7,7 @@ enum ModeState {
   unChanged,
  changed
 }
+enum ConnectState {
+  local,
+  online,
+}

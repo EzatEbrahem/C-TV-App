@@ -1,13 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/movies/domain/entities/reviews.dart';
-import 'package:movies_app/movies/presentation/controller/movie_detail_bloc.dart';
 import 'package:movies_app/tv/domain/entities/tv_series_review.dart';
 import 'package:movies_app/tv/presentation/controller/tv_series_details_bloc.dart';
 import 'package:movies_app/tv/presentation/controller/tv_series_details_states.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../../../core/network/api_constance.dart';
 import '../../../core/utils/enums.dart';
 
@@ -19,7 +16,6 @@ class TvSeriesReviewComponent extends StatelessWidget {
     return BlocBuilder<TvSeriesDetailsBloc,TvSeriesDetailsState>(
         buildWhen:(previous, current) => previous.tvSeriesReviewState!=current.tvSeriesRecommendationsState ,
         builder: (context,state){
-          print("review");
           switch(state.tvSeriesReviewState){
 
             case RequestState.loading:

@@ -1,4 +1,11 @@
-part of 'movie_bloc.dart';
+
+
+import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
+
+
+import '../../../core/utils/enums.dart';
+import '../../domain/entities/movie.dart';
 
 @immutable
 class MovieState extends Equatable {
@@ -11,8 +18,12 @@ class MovieState extends Equatable {
   final List<Movie> topRatedMovies;
   final RequestState topRatedState;
   final String topRatedMessage;
+  final RequestState reloadMovieScreenState;
+  final ConnectState connectionState;
 
   const MovieState({
+    this.connectionState=ConnectState.online,
+    this.reloadMovieScreenState=RequestState.loading,
     this.nowPlayingMovies = const [],
     this.nowPlayingState = RequestState.loading,
     this.nowPlayingMessage = '',
@@ -25,6 +36,8 @@ class MovieState extends Equatable {
   });
 
   MovieState copyWith({
+    ConnectState? connectionState,
+    RequestState? reloadMovieScreenState,
     List<Movie>? nowPlayingMovies,
     RequestState? nowPlayingState,
     String? nowPlayingMessage,
@@ -36,6 +49,8 @@ class MovieState extends Equatable {
     String? topRatedMessage,
   }) {
     return MovieState(
+      connectionState: connectionState??this.connectionState,
+      reloadMovieScreenState: reloadMovieScreenState??this.reloadMovieScreenState,
       nowPlayingMovies: nowPlayingMovies ?? this.nowPlayingMovies,
       nowPlayingState: nowPlayingState ?? this.nowPlayingState,
       nowPlayingMessage: nowPlayingMessage ?? this.nowPlayingMessage,
@@ -50,7 +65,7 @@ class MovieState extends Equatable {
 
   @override
   List<Object?> get props =>
-      [
+      [reloadMovieScreenState,
         nowPlayingMovies,
         nowPlayingState,
         nowPlayingMessage,
@@ -60,5 +75,6 @@ class MovieState extends Equatable {
         topRatedMovies,
         topRatedState,
         topRatedMessage,
+        connectionState
       ];
 }

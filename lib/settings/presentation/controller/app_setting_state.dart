@@ -1,4 +1,12 @@
-part of 'app_setting_bloc.dart';
+
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+
+import '../../../core/utils/enums.dart';
+import '../../../movies/presentation/screens/movies_screen.dart';
+import '../../../tv/presentation/screens/tv_series_screen.dart';
+import '../../domain/Entities/movie_search.dart';
+import '../../domain/Entities/tv_search.dart';
 
 @immutable
 class AppSettingState extends Equatable {

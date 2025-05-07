@@ -1,6 +1,6 @@
 import 'package:movies_app/tv/data/models/tv_series_review_author_model.dart';
 import 'package:movies_app/tv/domain/entities/tv_series_review.dart';
-import 'package:movies_app/tv/domain/entities/tv_series_review_author_details.dart';
+
 
 class TvSeriesReviewModel extends TvSeriesReview{
   const TvSeriesReviewModel(

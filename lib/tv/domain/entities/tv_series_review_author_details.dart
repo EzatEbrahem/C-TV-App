@@ -8,7 +8,7 @@ class TvSeriesReviewAuthorDetails extends Equatable{
   const TvSeriesReviewAuthorDetails({ required this.avatarPath, required this.rating});
 
   @override
-  // TODO: implement props
+
   List<Object?> get props => [avatarPath,rating];
 
 }

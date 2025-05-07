@@ -20,6 +20,6 @@ class TvSeries extends Equatable {
       });
 
   @override
-  // TODO: implement props
+
   List<Object?> get props => [id,backdropPath,genreIds,name,overview,firstAirDate,voteAverage];
 }

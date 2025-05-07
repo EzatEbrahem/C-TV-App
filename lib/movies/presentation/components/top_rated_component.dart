@@ -7,6 +7,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../core/network/api_constance.dart';
 import '../../../core/utils/enums.dart';
+import '../controller/movie_state.dart';
 import '../screens/movie_detail_screen.dart';
 
 
@@ -15,15 +16,18 @@ class TopRatedComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size;
+    final height=size.height/4.6;
+    final width=size.width/3.3;
     return BlocBuilder<MovieBloc,MovieState>(
       buildWhen: (previous, current)=>previous.topRatedState!=current.topRatedState,
       builder: (context,state){
         switch(state.topRatedState){
 
           case RequestState.loading:
-            return const SizedBox(
-              height: 170.0,
-              child: Center(
+            return  SizedBox(
+              height: height,
+              child: const Center(
                 child: CircularProgressIndicator(),
               ),
             );
@@ -31,7 +35,7 @@ class TopRatedComponent extends StatelessWidget {
             return FadeIn(
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
-                height: 170.0,
+                height: height,
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
@@ -58,15 +62,15 @@ class TopRatedComponent extends StatelessWidget {
                           borderRadius:
                           const BorderRadius.all(Radius.circular(8.0)),
                           child: CachedNetworkImage(
-                            width: 120.0,
+                            width: width,
                             fit: BoxFit.fill,
                             imageUrl: ApiConstance.imageUrl(movie.backdropPath!),
                             placeholder: (context, url) => Shimmer.fromColors(
                               baseColor: Colors.grey[850]!,
                               highlightColor: Colors.grey[800]!,
                               child: Container(
-                                height: 170.0,
-                                width: 120.0,
+                                height: height,
+                                width: width,
                                 decoration: BoxDecoration(
                                   color: Colors.black,
                                   borderRadius: BorderRadius.circular(8.0),
@@ -85,7 +89,7 @@ class TopRatedComponent extends StatelessWidget {
             );
           case RequestState.error:
             return SizedBox(
-              height: 170.0,
+              height: height,
               child: Center(
                 child: Text(state.nowPlayingMessage),
               ),

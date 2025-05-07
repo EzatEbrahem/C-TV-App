@@ -1,22 +1,12 @@
-
-import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
-import 'package:movies_app/movies/domain/entities/reviews.dart';
-import 'package:movies_app/movies/domain/entities/trailer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/movies/domain/usecases/get_recommendation_movies_usecase.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
-
 import '../../../core/utils/enums.dart';
-import '../../domain/entities/movie_details.dart';
-import '../../domain/entities/recommendation.dart';
 import '../../domain/usecases/get_movie_detail_usecase.dart';
 import '../../domain/usecases/get_movie_reviews_usecase.dart';
 import '../../domain/usecases/get_movie_trailer_usecase.dart';
+import 'movie_detail_event.dart';
+import 'movie_detail_state.dart';
 
-part 'movie_detail_event.dart';
-
-part 'movie_detail_state.dart';
 
 class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
   final GetMovieDetailUseCase getMovieDetailUseCase;
@@ -62,6 +52,7 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
               trailerMovieState: RequestState.loaded, trailerMovie: r)));
     });
     on<GetReviewsMoviesEvent>((event, emit) async {
+      emit(state.copyWith(reviewsMovieState: RequestState.loading));
       final result =
       await getMovieReviewsUseCase(MovieReviewsParameters(movieId: event.id));
       result.fold(

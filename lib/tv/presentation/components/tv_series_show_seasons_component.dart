@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/tv/presentation/controller/tv_series_details_bloc.dart';
@@ -15,6 +14,8 @@ class TvSeriesShowSeasonsComponents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size;
+    final height=size.height;
     return  BlocBuilder<TvSeriesDetailsBloc,TvSeriesDetailsState>(
       buildWhen:(previous, current) => previous.tvSeriesDetailsState!=current.tvSeriesDetailsState ,
       builder: (context, state) {
@@ -56,8 +57,8 @@ class TvSeriesShowSeasonsComponents extends StatelessWidget {
                               borderRadius: const BorderRadius.all(
                                   Radius.circular(8)),
                               child: CachedNetworkImage(
-                                width: 180,
-                                height: 110,
+                                width: double.infinity,
+                                height: height*0.14,
                                 fit: BoxFit.fill,
                                 imageUrl: ApiConstance.imageUrl(
                                     seasons!.posterPath),
@@ -66,8 +67,7 @@ class TvSeriesShowSeasonsComponents extends StatelessWidget {
                                       baseColor: Colors.grey[850]!,
                                       highlightColor: Colors.grey[800]!,
                                       child: Container(
-                                        width: 180,
-                                        height: 110,
+                                        width: double.infinity,
                                         decoration: BoxDecoration(
                                           color: Colors.black,
                                           borderRadius: BorderRadius.circular(

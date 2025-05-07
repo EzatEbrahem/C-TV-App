@@ -15,6 +15,6 @@ class TrailerMovie extends Equatable {
       required this.id});
 
   @override
-  // TODO: implement props
+
   List<Object?> get props => [name, key, site, type, id];
 }

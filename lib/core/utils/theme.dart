@@ -7,11 +7,11 @@ ThemeData lightTheme()=>ThemeData.light().copyWith(
       fillColor: Colors.grey,
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: Colors.tealAccent, width: 2), // لون لما مش عليه تركيز
+        borderSide: const BorderSide(color: Colors.tealAccent, width: 2),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(20),
-        borderSide: BorderSide(color: Colors.teal, width: 5),
+        borderSide: const BorderSide(color: Colors.teal, width: 5),
       ),
     ),
   progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.teal,),
@@ -29,9 +29,9 @@ ThemeData lightTheme()=>ThemeData.light().copyWith(
       unselectedItemColor: Colors.grey,
       backgroundColor: Colors.white,
     ),
-  floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor:Colors.teal ,elevation:5 ,iconSize: 27,), colorScheme: const ColorScheme(background: Colors.white, brightness: Brightness.light, primary: Colors.white, onPrimary: Colors.white,
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor:Colors.teal ,elevation:5 ,iconSize: 27,), colorScheme: const ColorScheme( brightness: Brightness.light, primary: Colors.white, onPrimary: Colors.white,
     secondary: Colors.white, onSecondary: Colors.white, error: Colors.red,
-    onError: Colors.red, surface: Colors.white, onSurface: Colors.white, onBackground: Colors.white)
+    onError: Colors.red, surface: Colors.white, onSurface: Colors.white, )
 );
 
 
@@ -42,11 +42,11 @@ ThemeData darkTheme()=>ThemeData.dark().copyWith(
     fillColor: Colors.black26,
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: Colors.redAccent, width: 2), // لون لما مش عليه تركيز
+      borderSide: const BorderSide(color: Colors.redAccent, width: 2),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),
-      borderSide: BorderSide(color: Colors.red, width: 5),
+      borderSide: const BorderSide(color: Colors.red, width: 5),
     ),
   ),
     shadowColor: Colors.grey.shade300,
@@ -57,10 +57,10 @@ ThemeData darkTheme()=>ThemeData.dark().copyWith(
       titleMedium: TextStyle(color: Colors.white),
 
     ),
-  primaryColor:Colors.teal ,
+  primaryColor:Colors.red ,
   progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.red,),
-    colorScheme:  const ColorScheme(background: Colors.white, brightness: Brightness.light, primary: Colors.red, onPrimary: Colors.black,
+    colorScheme:  const ColorScheme( brightness: Brightness.light, primary: Colors.red, onPrimary: Colors.black,
         secondary: Colors.black, onSecondary: Colors.black, error: Colors.red,
-        onError: Colors.red, surface: Colors.black, onSurface: Colors.black, onBackground: Colors.black),
+        onError: Colors.red, surface: Colors.black, onSurface: Colors.black, ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(elevation:5 ,iconSize: 27, ),
 );

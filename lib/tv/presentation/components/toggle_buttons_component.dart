@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/tv/presentation/controller/tv_series_details_bloc.dart';
 import 'package:movies_app/tv/presentation/controller/tv_series_details_states.dart';
-
 import '../controller/tv_series_details_events.dart';
 
 class ToggleButtonComponent extends StatelessWidget {
@@ -20,7 +18,7 @@ class ToggleButtonComponent extends StatelessWidget {
   sliver: SliverToBoxAdapter(
     child: Center(
       child: ToggleButtons(
-        borderWidth:2 ,textStyle:TextStyle(fontStyle: FontStyle.italic,fontSize: 15) ,
+        borderWidth:2 ,textStyle:const TextStyle(fontStyle: FontStyle.italic,fontSize: 15) ,
         borderColor:Colors.black ,
         borderRadius: const BorderRadius.all(Radius.circular(25)),
         selectedBorderColor: Colors.blueGrey,

@@ -47,6 +47,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> getPopularMovies() async {
+
     final response = await Dio().get(ApiConstance.popularMoviesPath);
     if (response.statusCode == 200) {
       return List<MovieModel>.from(

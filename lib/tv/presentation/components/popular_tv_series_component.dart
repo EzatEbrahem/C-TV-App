@@ -1,7 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/tv/presentation/controller/tv_series_bloc.dart';
@@ -17,14 +15,17 @@ class PopularTvSeriesComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final height = size.height/4.6;
+    final width = size.width/3.3;
     return BlocBuilder<TvSeriesBloc,TvSeriesState>(
       buildWhen:(previous, current) => previous.popularTvSeriesState!=current.popularTvSeriesState,
       builder: (BuildContext context, TvSeriesState state) {
         switch(state.popularTvSeriesState) {
           case RequestState.loading:
-            return const SizedBox(
-              height: 170.0,
-              child: Center(
+            return  SizedBox(
+              height: height,
+              child: const Center(
                 child: CircularProgressIndicator(),
               ),
             );
@@ -32,7 +33,7 @@ class PopularTvSeriesComponent extends StatelessWidget {
            return  FadeIn(
              duration: const Duration(milliseconds: 500),
              child: SizedBox(
-               height: 170.0,
+               height: height,
                child: ListView.builder(
                  physics: const BouncingScrollPhysics(),
                  shrinkWrap: true,
@@ -59,15 +60,15 @@ class PopularTvSeriesComponent extends StatelessWidget {
                          borderRadius:
                          const BorderRadius.all(Radius.circular(8.0)),
                          child: CachedNetworkImage(
-                           width: 120.0,
+                           width: width,
                            fit: BoxFit.fill,
                            imageUrl: ApiConstance.imageUrl(tv.backdropPath),
                            placeholder: (context, url) => Shimmer.fromColors(
                              baseColor: Colors.grey[850]!,
                              highlightColor: Colors.grey[800]!,
                              child: Container(
-                               height: 170.0,
-                               width: 120.0,
+                               height: height,
+                               width:width,
                                decoration: BoxDecoration(
                                  color: Colors.black,
                                  borderRadius: BorderRadius.circular(8.0),
@@ -86,7 +87,7 @@ class PopularTvSeriesComponent extends StatelessWidget {
            );
           case RequestState.error:
             return SizedBox(
-              height: 170.0,
+              height: height,
               child: Center(
                 child: Text(state.popularTvSeriesMessage),
               ),

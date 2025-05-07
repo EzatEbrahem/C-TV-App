@@ -1,4 +1,3 @@
-import 'package:movies_app/settings/domain/Entities/tv_search.dart';
 
 import '../../domain/Entities/movie_search.dart';
 

@@ -1,12 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/tv/presentation/controller/tv_series_details_bloc.dart';
 import 'package:movies_app/tv/presentation/controller/tv_series_details_states.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../../../core/network/api_constance.dart';
 import '../../../core/utils/enums.dart';
 
