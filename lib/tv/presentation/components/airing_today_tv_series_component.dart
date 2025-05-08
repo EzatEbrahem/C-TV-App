@@ -74,7 +74,7 @@ class AiringTodayTvSeriesComponent extends StatelessWidget {
                                 Colors.black,
                                 Colors.transparent,
                               ],
-                              stops: [0, 0.2, 0.5, 1],
+                              stops: [0, 0.2, 0.6, 1],
                             ).createShader(
                               Rect.fromLTRB(0, 0, rect.width, rect.height),
                             );

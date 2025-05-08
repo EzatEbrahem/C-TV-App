@@ -15,6 +15,8 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size=MediaQuery.of(context).size;
     final width=size.width;
+    final height=size.height;
+
     return BlocBuilder<AppSettingBloc, AppSettingState>(
       builder: (context, state) {
         return Scaffold(
@@ -28,7 +30,7 @@ class SplashScreen extends StatelessWidget {
           floatingActionButton:
               Stack(children: [
                 Positioned(
-                  bottom:0,
+                  bottom:height*0.03,
                   width: width*0.155,
                   height: width*0.155,
                   left: width/2.35,
@@ -40,7 +42,7 @@ class SplashScreen extends StatelessWidget {
                       child: const Icon(Icons.light_mode_rounded)),
                 ),
                 Positioned(
-                  top: 250,
+                  top: height*0.2,
                   width: width*0.12,
                   height: width*0.12,
                   left: 2,

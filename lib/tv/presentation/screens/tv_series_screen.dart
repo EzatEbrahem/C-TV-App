@@ -65,10 +65,8 @@ class _TvSeriesScreen extends StatelessWidget {
             await completer.future;
             await subscription.cancel();
           },
-          child: SingleChildScrollView(
+          child: ListView(
             physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const AiringTodayTvSeriesComponent(),
                 Container(
@@ -143,7 +141,6 @@ class _TvSeriesScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

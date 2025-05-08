@@ -66,12 +66,10 @@ class _MainMoviesView extends StatelessWidget {
               await completer.future;
               await subscription.cancel();
               },
-              child:SingleChildScrollView(
+              child:ListView(
                 physics: const BouncingScrollPhysics(),
                 key: const Key('movieScrollView'),
-                child:
-                  Column(
-                    children: [
+                  children: [
                       const NowPlayingComponent(),
                       Container(
                         margin: const EdgeInsets.fromLTRB(16.0, 15.0, 16.0, 8.0),
@@ -134,9 +132,6 @@ class _MainMoviesView extends StatelessWidget {
                   ),
 
               ),
-
-
-          ),
     );
   }
 }

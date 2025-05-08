@@ -72,16 +72,12 @@ class SeeMoreComponent extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 11.0,right: 8),
                         child: SizedBox(
-                          height: height*0.22,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top:20),
-                                child: Text(
-                                  movie.title,style: const TextStyle( fontSize: 19,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),overflow:TextOverflow.ellipsis ,maxLines:2 ),
-                              ),
+                              Text(
+                                movie.title,style: const TextStyle( fontSize: 19,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),overflow:TextOverflow.ellipsis ,maxLines:2 ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 20.0),
                                 child: Row(
